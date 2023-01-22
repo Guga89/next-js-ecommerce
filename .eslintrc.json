@@ -1,4 +1,12 @@
 {
   "extends": ["eslint:recommended", "next/core-web-vitals", "airbnb-base"],
-  "rules": { "linebreak-style": 0, "no-img-element": 0 }
+  "rules": {
+    "linebreak-style": 0,
+    "no-img-element": 0,
+    "no-confusing-arrow": 0,
+    "indent": 0,
+    "function-paren-newline": 0,
+    "comma-dangle": 0,
+    "implicit-arrow-linebreak": "off"
+  }
 }

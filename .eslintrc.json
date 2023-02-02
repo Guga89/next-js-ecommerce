@@ -10,7 +10,8 @@
     "implicit-arrow-linebreak": "off",
     "no-underscore-dangle": "off",
     "import/prefer-default-export": 0,
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-nested-ternary": "off"
   },
   "env": { "browser": true, "node": true, "es6": true }
 }

@@ -1,19 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import Layout from '../../components/Layout';
-import data from '../../utils/data';
+import Product from '../../models/Product';
+import db from '../../utils/db';
 import { Store } from '../../utils/Store';
 
-export default function ProductScreen() {
+export default function ProductScreen(props) {
+  const { product } = props;
   const { state, dispatch } = useContext(Store);
-  const { query } = useRouter();
-  const { slug } = query;
-  const product = data.products.find((x) => x.slug === slug);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <Layout title="Not Found">
+        <div className="bg-amber-100 text-center">Product not found</div>
+      </Layout>
+    );
   }
 
   const addToHandler = () => {
@@ -71,4 +73,18 @@ export default function ProductScreen() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
 }

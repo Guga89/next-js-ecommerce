@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import Image from 'next/image';
 import Link from 'next/link';
 import { XCircleIcon } from '@heroicons/react/outline';
@@ -19,9 +21,17 @@ function CartScreen() {
     // console.log('item has been removed');
   };
 
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      return toast.error(
+        `Sorry, only ${data.countInStock} - "${data.name}" is available at the moment`
+      );
+    }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    toast.success('Successfuly update cart item');
+    return null;
   };
 
   return (
@@ -109,7 +119,6 @@ function CartScreen() {
                     router.push('login?redirect=/shipping');
                   }}
                 >
-                  {' '}
                   Check out
                 </button>
               </li>

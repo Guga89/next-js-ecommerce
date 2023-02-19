@@ -12,7 +12,9 @@
     "import/prefer-default-export": 0,
     "no-param-reassign": "off",
     "no-nested-ternary": "off",
-    "consistent-return": "warn"
+    "consistent-return": "warn",
+    "operator-linebreak": "off",
+    "object-curly-newline": "off"
   },
   "env": { "browser": true, "node": true, "es6": true }
 }

@@ -38,7 +38,7 @@ export default function Layout({ children, title }) {
 
       <div className="flex min-h-screen flex-col justify-between">
         <header>
-          <nav className="flex h-12 items-center px-4 justify-between shadow-md fixed w-screen bg-white">
+          <nav className="flex h-12 items-center px-8 justify-between shadow-md fixed w-screen bg-white">
             <Link href="/" legacyBehavior>
               <a className="text-lg font-bold">Ecommerce Logo</a>
             </Link>

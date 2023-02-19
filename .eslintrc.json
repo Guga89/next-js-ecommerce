@@ -12,7 +12,7 @@
     "import/prefer-default-export": 0,
     "no-param-reassign": "off",
     "no-nested-ternary": "off",
-    "consistent-return": "warn",
+    "consistent-return": "off",
     "operator-linebreak": "off",
     "object-curly-newline": "off"
   },
